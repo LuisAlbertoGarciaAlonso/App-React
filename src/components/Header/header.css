@@ -1,0 +1,595 @@
+header {
+  color: white;
+    background-color: #000000;
+    display: flex;
+    grid-area: header;
+    margin-bottom: 0.5rem; }
+    header:hover {
+      transition: all 1s ease-in;
+      background-color: #0a0a0a;
+      color: red;
+      width: 100%;
+      border-radius: 20%; }
+    header a {
+      text-decoration: none; }
+    header .logo {
+      border-radius: 100%;
+      margin: 1rem;
+      margin-left: 8rem; }
+    header .firma {
+      font-size: 9rem;
+      width: 100%;
+      margin-left: 12rem;
+      margin-top: 1.5rem; }
+  
+  nav {
+    background-color: #000000;
+    display: flex;
+    letter-spacing: 0.1rem;
+    grid-area: barra;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center; }
+    nav ul ul {
+
+      position: absolute;
+      display: none;
+      top: 26rem;
+      left: 14rem;
+      z-index: 1; }
+      nav ul ul li {
+        margin: 0.1rem;
+        padding: 0.15rem; }
+    nav ul li {
+      list-style: none;
+      margin: 0.6rem; }
+      nav ul li:hover {
+        background-color: #000000; }
+        nav ul li:hover ul {
+          color: white;
+          background-color: #000000;
+          display: inline-block;
+          margin: -4.5rem;
+          padding: 0rem;
+          font-size: 1rem;
+          z-index: 1; }
+          nav ul li:hover ul:hover {
+            background-color: #272626; }
+    nav ul a {
+      color: #ffffff;
+      text-decoration: none; }
+      nav ul a:hover {
+        transition: all 0.5s ease-in;
+        border-radius: 30%;
+        background-color: #000000;
+        color: red;
+        border: red 1px solid;
+        padding: 0.2rem; }
+  
+  .flex {
+    justify-content: space-around;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; }
+    .flex .equipo {
+      border: 100%;
+      width: 12rem;
+      border-radius: 80%;
+      font-size: 1.5rem;
+      margin: 0.1rem;
+      padding: 0.1rem; }
+      .flex .equipo:hover {
+        transform: scale(1.2, 1.2);
+        box-shadow: 0px 0px 20px 10px red; }
+  
+  .table {
+    margin-left: 10rem; }
+    .table tbody {
+      border-style: none; }
+    .table .usuario {
+      color: black;
+      font-size: 1.5rem;
+      background-color: white;
+      border: #cf0b0b solid 0.1rem;
+      margin-right: 1rem;
+      margin-top: 0.2rem; }
+      .table .usuario:hover {
+        color: red;
+        border-radius: 30%;
+        background-color: black;
+        transition: all 0.5s ease-in; }
+    .table .backColor {
+      background-color: white;
+      border: red solid 0.1rem;
+      color: black;
+      margin-top: 12rem;
+      font-size: 1.5rem; }
+    .table ol {
+      text-decoration: none;
+      list-style: none;
+      color: #ffffff; }
+    .table a {
+      text-decoration: none;
+      color: #cacaca; }
+      .table a:hover {
+        background-color: #000000;
+        border-radius: 30%;
+        color: red;
+        transition: all 0.5s ease-in; }
+  
+  .cuerpo {
+    grid-area: cuerpo;
+    display: flex;
+    flex-direction: row;
+    background-color: #000000; }
+    .cuerpo .center {
+      text-align: center; }
+    .cuerpo .miVideo {
+      margin-left: 13rem; }
+    .cuerpo .logo2 {
+      height: 20rem;
+      width: 50rem;
+      margin-left: 10rem; }
+    .cuerpo .logo3 {
+      height: 20rem;
+      width: 40rem;
+      margin-left: 14rem; }
+    .cuerpo p {
+      margin: 1.5rem; }
+    .cuerpo .notfound {
+      font-size: 5rem;
+      margin-left: 20rem; }
+    .cuerpo .buttom {
+      width: 14rem;
+      margin-top: 1rem; }
+    .cuerpo .color {
+      color: red; }
+  
+  
+  .marcas {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr; }
+    .marcas div a {
+      width: 100%; }
+    .marcas div img {
+      border-radius: 5%; }
+  
+  .mainGrids {
+    width: 100%;
+    display: grid;
+    gap: 0.2rem;
+    justify-items: center;
+    grid-template-columns: 0.25fr 0.25fr;
+    grid-template-rows: 11rem 11rem 11rem;
+    margin: 0.1rem; }
+    .mainGrids p {
+      text-align: center;
+      font-size: 0.7rem; }
+    .mainGrids img {
+      border-radius: 5%; }
+      .mainGrids img:hover {
+        border-radius: 50%;
+        box-shadow: 0px 0px 15px 15px red;
+        transform: scale(1.2, 1.2); }
+  
+  .aside {
+    grid-area: aside;
+    background-color: #000000; }
+    .aside .musica {
+      height: 3rem;
+      width: 14rem; }
+  
+  footer {
+    grid-area: footer;
+    background-color: #000000;
+    text-align: center;
+    margin-top: 2rem; }
+    footer nav {
+      font-size: 1.5rem;
+      justify-content: center; }
+    footer a {
+      text-decoration: none;
+      color: white; }
+    footer:hover {
+      background: radial-gradient(ellipse, #000000, #000000, #000000);
+      width: 100%; }
+    footer ul {
+      list-style: none; }
+      footer ul li:hover {
+        color: red; }
+  
+  @media only screen and (max-width: 767px) {
+    header {
+      height: 6rem; }
+    header .logo {
+      margin-left: 1rem;
+      height: 5rem;
+      width: 5rem;
+      margin: 1rem; }
+    header .firma {
+      font-size: 1.9rem;
+      margin-top: 2rem;
+      margin-left: 0.3rem; }
+    main {
+      grid-template-columns: 0.5fr 1fr;
+      margin-right: 1rem; }
+      main .cuerpo .miVideo {
+        margin-left: 0.5rem;
+        height: 7.55rem;
+        width: 12.5rem;
+        margin-top: 0; }
+      main .cuerpo .logo2 {
+        margin-left: 0.5rem;
+        height: 8rem;
+        width: 12.5rem; }
+      main .cuerpo .logo3 {
+        margin-left: 0.5rem;
+        height: 8rem;
+        width: 12.5rem; }
+      main .cuerpo p {
+        margin: 0.5rem; }
+      main .cuerpo .notfound {
+        font-size: 5rem;
+        margin-left: 20rem; }
+    aside {
+      display: none; }
+    footer {
+      font-size: 0.35rem;
+      padding: 0;
+      margin-top: 1rem; }
+      footer ul {
+        padding-left: 0rem; }
+    textarea {
+      width: 13.5rem; }
+    nav {
+      letter-spacing: 0rem;
+      font-size: 1rem; }
+      nav ul {
+        margin: 0;
+        padding: 0; }
+        nav ul ul {
+          top: 12rem;
+          left: 7rem; }
+    .grid {
+      grid-template-columns: auto;
+      grid-template-rows: 5rem 5rem 5rem 5rem 5rem;
+      padding: 0; }
+      .grid .acesoramiento {
+        width: auto; }
+      .grid .capacitaciones {
+        width: auto; }
+      .grid .posventa {
+        width: auto; }
+      .grid .materiales {
+        width: auto; }
+      .grid .ventas {
+        width: auto; }
+      .grid .grid1 {
+        padding: 0; }
+    .flex {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 0rem;
+      flex-direction: column;
+      flex-wrap: wrap; }
+    .marcas {
+      display: block; }
+      .marcas div {
+        margin-bottom: 1rem; }
+      .marcas a {
+        width: 100%; }
+    .mainGrids {
+      display: grid;
+      grid-template-columns: auto; }
+      .mainGrids img {
+        width: 13.5rem;
+        margin-bottom: 0.3rem; }
+      .mainGrids p {
+        font-size: 0.8rem; }
+    .table {
+      margin-left: 0rem; }
+      .table .usuario {
+        width: 13.1rem; }
+      .table img {
+        display: none; } }
+  
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    main {
+      grid-template-columns: 1fr 2fr 0.5fr; }
+    header {
+      height: 6rem; }
+    header .logo {
+      margin-left: 1rem;
+      height: 5rem;
+      width: 5rem;
+      margin: 1rem; }
+    header .firma {
+      font-size: 5rem;
+      margin-top: 0.5rem;
+      margin-left: 0.3rem; }
+    .cuerpo .miVideo {
+      margin-left: 0.5rem;
+      height: 14.55rem;
+      width: 25rem;
+      margin-top: 0; }
+    .cuerpo .logo2 {
+      margin-left: 0.5rem;
+      height: 15rem;
+      width: 25rem; }
+    .cuerpo .logo3 {
+      margin-left: 0.5rem;
+      height: 15rem;
+      width: 25rem; }
+    .cuerpo p {
+      margin: 0.5rem;
+      font-size: 1.5rem; }
+    .cuerpo .notfound {
+      font-size: 5rem;
+      margin-left: 20rem; }
+    aside {
+      display: none; }
+    footer {
+      font-size: 0.3rem;
+      margin-top: 1rem; }
+      footer ul {
+        padding-left: 0rem; }
+    textarea {
+      width: 13.5rem; }
+    nav {
+      letter-spacing: 0rem;
+      font-size: 1rem; }
+      nav ul {
+        margin: 0;
+        padding: 0; }
+        nav ul ul {
+          top: 12rem;
+          left: 8rem; }
+    .grid {
+      grid-template-columns: auto;
+      grid-template-rows: 5rem 5rem 5rem 5rem 5rem;
+      padding: 0; }
+      .grid .acesoramiento {
+        width: auto; }
+      .grid .capacitaciones {
+        width: auto; }
+      .grid .posventa {
+        width: auto; }
+      .grid .materiales {
+        width: auto; }
+      .grid .ventas {
+        width: auto; }
+      .grid .grid1 {
+        padding: 0; }
+    .flex {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 0rem;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center; }
+      .flex .equipo {
+        width: 14rem; }
+    .marcas {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px; }
+      .marcas div {
+        margin-bottom: 0.1rem; }
+      .marcas a {
+        width: 100%; }
+    .mainGrids {
+      display: grid;
+      grid-template-rows: auto; }
+      .mainGrids div {
+        text-align: center;
+        width: auto; }
+      .mainGrids img {
+        width: 15rem;
+        margin-bottom: 0.3rem; }
+      .mainGrids p {
+        font-size: 1rem; }
+    .table {
+      margin-left: 0rem; }
+      .table .usuario {
+        width: 11rem;
+        font-size: 1.1rem; }
+      .table img {
+        width: 25rem;
+        margin-top: 1rem;
+        border-radius: 5%; } }
+  
+  @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    header .logo {
+      margin-left: 0.5rem; }
+    header .firma {
+      font-size: 6.7rem;
+      margin-left: 1.5rem; }
+    .cuerpo .miVideo {
+      margin-left: 5rem;
+      width: 30rem;
+      height: 19.55rem; }
+    .cuerpo .logo2 {
+      margin-left: 3.5rem;
+      width: 35rem; }
+    .cuerpo .logo3 {
+      margin-left: 5rem;
+      width: 30rem; }
+    .cuerpo p {
+      font-size: 2rem; }
+    .flex .equipo {
+      width: 9.4rem; }
+    .table {
+      margin-left: 0rem; }
+      .table .imagenTabla {
+        margin-top: 1rem; }
+      .table .usuario {
+        width: 14rem; }
+    .mainGrids {
+      display: grid;
+      grid-template-rows: auto; }
+      .mainGrids img {
+        width: 15rem; }
+      .mainGrids p {
+        font-size: 1.2rem; }
+    .aside {
+      width: 8rem; }
+      .aside img {
+        width: 8rem; }
+    .table .usuario {
+      font-size: 1.8rem;
+      width: 18rem; }
+    .table img {
+      margin-top: 1rem;
+      border-radius: 5%; } }
+  
+  @media only screen and (min-width: 1280px) {
+    .marcas {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr; }
+    .mainGrids {
+      grid-template-columns: 0.25fr 0.25fr 0.25fr;
+      grid-template-rows: 11rem 11rem; }
+    .aside {
+      width: 17rem; }
+      .aside .musica {
+        width: 10rem; }
+      .aside img {
+        width: 10rem; }
+    .cuerpo .miVideo {
+      margin-left: 16.5rem;
+      width: 30rem; }
+    .cuerpo .logo2 {
+      margin-left: 15rem;
+      width: 34rem; }
+    .cuerpo .logo3 {
+      margin-left: 16.5rem;
+      width: 30rem; }
+    nav {
+      justify-content: start; }
+    .mainGrids {
+      display: grid;
+      grid-template-rows: auto; }
+      .mainGrids img {
+        width: 20rem; }
+      .mainGrids p {
+        font-size: 1.6rem; }
+    .flex .equipo {
+      width: 14rem; }
+    .table .usuario {
+      font-size: 1.8rem;
+      width: 20rem; }
+    .table img {
+      width: 30rem;
+      margin-top: 1rem;
+      border-radius: 5%; } }
+  
+  @media only screen and (min-width: 1441px) {
+    header .firma {
+      margin-left: 10rem; }
+    header .logo {
+      margin-left: 3.4rem; }
+    .marcas {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr; }
+    .mainGrids {
+      grid-template-columns: 0.25fr 0.25fr 0.25fr;
+      grid-template-rows: 11rem 11rem; }
+    .aside {
+      margin-left: 10rem; }
+      .aside img {
+        width: 16rem; }
+    .cuerpo .miVideo {
+      margin-left: 15%;
+      height: 35.55rem;
+      width: 70%; }
+    .cuerpo .logo2 {
+      margin-left: 15%;
+      height: 36rem;
+      width: 70%; }
+    .cuerpo .logo3 {
+      margin-left: 15%;
+      height: 36rem;
+      width: 70%; }
+    .cuerpo p {
+      font-size: 2.5rem; }
+    .cuerpo .buttom {
+      width: 25rem; }
+    nav {
+      justify-content: start;
+      font-size: 2.5rem;
+      margin-left: 2rem;
+      margin-top: 2rem; }
+      nav ul ul li {
+        font-size: 2rem; }
+    .mainGrids {
+      display: grid;
+      grid-template-rows: auto;
+      margin-left: 13rem; }
+      .mainGrids img {
+        width: 24rem;
+        margin: 1rem; }
+      .mainGrids p {
+        font-size: 1.6rem; }
+    .flex {
+      font-size: 2.5rem; }
+      .flex .equipo {
+        width: 14rem; }
+    .table {
+      margin-left: 21rem; }
+      .table .usuario {
+        font-size: 2.2rem;
+        width: 22rem; }
+      .table img {
+        width: 30rem;
+        margin-top: 1rem;
+        border-radius: 5%; }
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2rem; }
+      .grid .acesoramiento {
+        width: auto; }
+      .grid .capacitaciones {
+        width: auto; }
+      .grid .posventa {
+        width: auto; }
+      .grid .materiales {
+        width: auto; }
+      .grid .ventas {
+        width: auto; }
+      .grid .grid1 a {
+        font-size: 3.5rem;
+        margin-left: 1.5rem; } }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+  
+  body {
+    background-color: #000000; }
+    body .aparecer {
+      animation-duration: 4s;
+      animation-name: aparecer; }
+  
+  @keyframes aparecer {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  
+  main {
+    color: #ffffff;
+    background-color: #000000;
+    font-family: "Architects Daughter", cursive;
+    display: grid;
+    grid-template-areas: "header header header"
+   "barra cuerpo aside"
+   "footer footer footer"; }

@@ -1,0 +1,16 @@
+.botonMas{
+    padding: 10px;
+    margin-left: 52px;
+    width:50px;
+    margin-bottom: 10px;
+}
+.botonMenos{
+    padding: 10px;
+    margin-left: 45px;
+    width:50px;
+    margin-bottom: 10px;
+}
+.cantidad{
+    color: white;
+    margin-left: 45px;
+}

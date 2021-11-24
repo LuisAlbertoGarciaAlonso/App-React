@@ -1,0 +1,96 @@
+* {
+  font-family: "Architects Daughter", cursive;
+  
+}
+
+body {
+  background-color: #000000; }
+  body .aparecer {
+    animation-duration: 4s;
+    animation-name: aparecer; }
+
+@keyframes aparecer {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.links {
+  margin-top: 1rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 10rem;
+  display: inline;
+  font-size: 1rem;
+  
+}
+
+.activeClass {
+  color: rgb(255, 0, 0);
+  font-size: 30px;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 10px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  justify-content: space-around;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  justify-self: flex-start;
+  color: white;
+}
+
+.item_card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 40%;
+  padding: 15px;
+  border-radius: 10px;
+  color:black;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 7px 6px 12px 1px rgba(255, 0, 0, 0.77);
+  -webkit-box-shadow: 7px 6px 12px 1px rgba(255, 0, 0, 0.77);
+  -moz-box-shadow: 7px 6px 12px 1px rgba(255, 0, 0, 0.77);
+}
+
+
+.cardOferta {
+  background: rgb(19, 19, 19);
+  color: white;
+}
+
+.tamañoImagen{
+  width: 200px;
+}
+
+.imagenDetail{
+  width: 250px;
+}
