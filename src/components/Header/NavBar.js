@@ -7,6 +7,7 @@ export const NavBar = () => {
     { id: '', address: '/category/herramientas de mano', text: 'Herramientas de Mano' },
     { id: '', address: '/category/medicion', text: 'Medicion' },
     { id: '', address: '/category/porta herramientas', text: 'Porta Herramientas' },
+    { id: '', address: '/category/Carrito', text: 'Carrito' },
   ];
   return (
     <section className="aparecer">

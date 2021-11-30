@@ -25,5 +25,11 @@ export const ItemDetailContainer = () => {
       });
   }, [itemId]);
 
-  return isLoading ? <h1>CARGANDO...</h1> : <ItemDetail {...product} />;
+  // esta es la funcion del boton agragr al carrito
+  const onAdd = (cantidad) => {
+
+    console.log({...product,cantidad:cantidad});
+    }
+
+  return isLoading ?<h1>CARGANDO...</h1> : <ItemDetail {...product} onAdd={onAdd}/>;
 };
