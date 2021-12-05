@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; //saque Link
 
 export const NavBar = () => {
   const categories = [
-    { id: '', address: '/', text: 'ELECTRIFICA' },
-    { id: '', address: '/category/herramientas de mano', text: 'Herramientas de Mano' },
-    { id: '', address: '/category/medicion', text: 'Medicion' },
-    { id: '', address: '/category/porta herramientas', text: 'Porta Herramientas' },
-    { id: '', address: '/category/Carrito', text: 'Carrito' },
+    { id: '1', address: '/', text: 'ELECTRIFICA' },
+    { id: '2', address: '/category/herramientas de mano', text: 'Herramientas de Mano' },
+    { id: '3', address: '/category/medicion', text: 'Medicion' },
+    { id: '4', address: '/category/porta herramientas', text: 'Porta Herramientas' },
+    { id: '5', address: '/Carrito', text: 'Carrito' },
   ];
   return (
     <section className="aparecer">

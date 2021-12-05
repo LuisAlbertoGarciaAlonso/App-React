@@ -1,0 +1,7 @@
+.btnTerminarCompra{
+    color: black;
+    text-decoration: none;
+}
+.btnTerminarCompra:hover{
+    color: red;
+}

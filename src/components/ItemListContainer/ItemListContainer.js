@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ItemList } from './ItemList';
 import { data } from '../../DataProducts/ArrayProductos';
 import { useParams } from 'react-router-dom';
+import {Spinner} from "react-bootstrap"
+
 
 export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
@@ -29,7 +31,8 @@ export const ItemListContainer = ({ greeting }) => {
   }, [catId]);
 
   return loader ? (
-    <h1>CARGANDO...</h1>
+    <Spinner animation="border" role="status" variant="primary" className="spinnerUbicacion">
+  <span className="visually-hidden">Cargando...</span></Spinner> 
   ) : (
     <>
       <h3 style={{ textAlign: 'center' }}>{greeting}</h3>

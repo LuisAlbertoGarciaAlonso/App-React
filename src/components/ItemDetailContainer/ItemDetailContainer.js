@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { ItemDetail } from '../ItemDetailContainer/ItemDetail';
-import { data } from '../../DataProducts/ArrayProductos';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { ItemDetail } from "../ItemDetailContainer/ItemDetail";
+import { data } from "../../DataProducts/ArrayProductos";
+import { useParams } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import "../../Css/spinner.css";
 
 export const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { itemId } = useParams();
+  const [irAlCarrito, setIrAlCarrito] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,9 +30,20 @@ export const ItemDetailContainer = () => {
 
   // esta es la funcion del boton agragr al carrito
   const onAdd = (cantidad) => {
+    console.log({ ...product, cantidad: cantidad });
+    setIrAlCarrito(true);
+  };
 
-    console.log({...product,cantidad:cantidad});
-    }
-
-  return isLoading ?<h1>CARGANDO...</h1> : <ItemDetail {...product} onAdd={onAdd}/>;
+  return isLoading ? (
+    <Spinner
+      animation="border"
+      role="status"
+      variant="primary"
+      className="spinnerUbicacion"
+    >
+      <span className="visually-hidden ">Cargando...</span>
+    </Spinner>
+  ) : (
+    <ItemDetail {...product} onAdd={onAdd} irAlCarrito={irAlCarrito} />
+  );
 };

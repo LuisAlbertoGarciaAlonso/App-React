@@ -1,16 +1,19 @@
 .botonMas{
-    padding: 10px;
-    margin-left: 52px;
-    width:50px;
+    padding: 5px;
     margin-bottom: 10px;
+    color: black;
 }
 .botonMenos{
-    padding: 10px;
-    margin-left: 45px;
-    width:50px;
+    padding: 5px;
     margin-bottom: 10px;
+    color: black;
+}
+.botonAdd{
+    padding: 5px;
+    margin-bottom: 10px;
+    color: black;
 }
 .cantidad{
     color: white;
-    margin-left: 45px;
+    margin-left: 10px;
 }
