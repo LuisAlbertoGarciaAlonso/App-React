@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 export const Item = ({ id, name, category, image, price }) => {
   return (
     <Link to={`/product/${id}`}>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ItemDetail } from "../ItemDetailContainer/ItemDetail";
+import { ItemDetail } from "./ItemDetail";
 import { data } from "../../DataProducts/ArrayProductos";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import "../../Css/spinner.css";
+
+
 
 export const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -16,7 +18,7 @@ export const ItemDetailContainer = () => {
     const getProduct = new Promise((res) => {
       setTimeout(() => {
         res(data);
-      }, 2000);
+      }, 1000);
     });
 
     getProduct
