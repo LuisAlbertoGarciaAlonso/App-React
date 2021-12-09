@@ -8,10 +8,11 @@ export const Item = ({ id, name, category, image, price }) => {
       <div className={`item_card cardOferta`}>
         <span>{name}</span>
         <span>Cat: {category}</span>
-        <span>
+        <span className="tamaño">
           <img src={image} alt={name} className="tamañoImagen"/>
         </span>
         <span>$ {price}</span>
+        <button className="btn btn-success botonAdd">Ver Producto</button>
       </div>
     </Link>
   );

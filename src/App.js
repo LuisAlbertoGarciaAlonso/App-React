@@ -5,13 +5,17 @@ import { NavBar } from './components/Header/NavBar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import CartWidget from './components/CartWidget/CartWidget.jsx';
-import { ProductsProvider } from './Context/ContextProducts';
+import { ProductsProvider } from './Context/ProductsContext';
+
+
 //import ItemCount from './components/ItemCount/ItemCount.jsx';
 
 export default function App() {
     
+ 
+
   return (
-    <ProductsProvider value={}>
+    <ProductsProvider>
     <BrowserRouter>
       <NavBar />
       <Routes>
@@ -21,10 +25,8 @@ export default function App() {
 
         <Route path="/product/:itemId" element={<ItemDetailContainer />} />
 
-        
         <Route path="/Carrito" element={<CartWidget />} />
         
-
         {/*   MENSAJE DE ERROR RUTA QUE NO EXISTE
         <Route path="*" element={<h1>404 NOT FOUND</h1>} /> */}
         {/* REDIRECCIONAR SI NO EXISTE RUTA

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ItemDetail } from "./ItemDetail";
 import { data } from "../../DataProducts/ArrayProductos";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import "../../Css/spinner.css";
+import { ProductsContext } from "../../Context/ProductsContext";
 
 
 
@@ -12,6 +13,8 @@ export const ItemDetailContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { itemId } = useParams();
   const [irAlCarrito, setIrAlCarrito] = useState(false);
+
+  const { setCart } = useContext(ProductsContext) //para usar el contesxt
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,6 +36,8 @@ export const ItemDetailContainer = () => {
   // esta es la funcion del boton agragr al carrito
   const onAdd = (cantidad) => {
     console.log({ ...product, cantidad: cantidad });
+    setCart(cart => [...cart,{ ...product, cantidad: cantidad }]) //aca seteamos el cart del context
+
     setIrAlCarrito(true);
   };
 
