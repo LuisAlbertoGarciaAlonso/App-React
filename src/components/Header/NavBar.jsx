@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'; //saque Link
 
+
 export const NavBar = () => {
+  
   const categories = [
     { id: '1', address: '/', text: 'ELECTRIFICA' },
     { id: '2', address: '/category/herramientas de mano', text: 'Herramientas de Mano' },
     { id: '3', address: '/category/medicion', text: 'Medicion' },
     { id: '4', address: '/category/porta herramientas', text: 'Porta Herramientas' },
-    { id: '5', address: '/Carrito', text: 'Carrito' },
+    { id: '5', address: '/Carrito', text: 'Carrito'  } ,
   ];
   return (
     <section className="aparecer">
@@ -17,7 +19,7 @@ export const NavBar = () => {
             <NavLink
               to={cat.address}
               className={({ isActive }) => (isActive ? 'activeClass' : '')}>
-              {cat.text}
+              {cat.text} 
             </NavLink>
           </div>
         );

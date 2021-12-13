@@ -14,7 +14,7 @@ export const ItemDetailContainer = () => {
   const { itemId } = useParams();
   const [irAlCarrito, setIrAlCarrito] = useState(false);
 
-  const { setCart } = useContext(ProductsContext) //para usar el contesxt
+  const { addToCart } = useContext(ProductsContext) //para usar el contesxt
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,7 +23,6 @@ export const ItemDetailContainer = () => {
         res(data);
       }, 1000);
     });
-
     getProduct
       .then((result) => {
         itemId && setProduct(result.find((item) => item.id === itemId));
@@ -32,15 +31,11 @@ export const ItemDetailContainer = () => {
         setIsLoading(false);
       });
   }, [itemId]);
-
   // esta es la funcion del boton agragr al carrito
   const onAdd = (cantidad) => {
-    console.log({ ...product, cantidad: cantidad });
-    setCart(cart => [...cart,{ ...product, cantidad: cantidad }]) //aca seteamos el cart del context
-
+    addToCart({ ...product, cantidad: cantidad })
     setIrAlCarrito(true);
   };
-
   return isLoading ? (
     <Spinner
       animation="border"
