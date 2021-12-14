@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+// import {collection, addDoc, getFirestore} from "firebase/firestore"  //lo comentamos ya subieron los productos
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -20,6 +21,71 @@ const firebaseConfig = {
 
 // Initialize Firebase
 initializeApp(firebaseConfig)
+
+//subiendo al firebase los productos hardCodear asi no subimos items por items
+// const data = [
+//   {
+//    id: "1",
+//    name: "JUEGO DE HERRAMIENTAS ELECTRICISTA",
+//    category: "herramientas de mano",
+//    image: "/img/oferta1.jpg",
+//    price: 900,
+//    stock: 5,
+//    count: 0,
+//  },
+//  {
+//    id: "2",
+//    name: "JUEGO DE DESTORNILLADORES",
+//    category: "herramientas de mano",
+//    price: 1200,
+//    stock: 5,
+//    image: "/img/oferta2.jpg",
+// count: 0,
+//  },
+//  {
+//    id: "3",
+//    name: "GRIMPADORA CORTA CABLE N° 8",
+//    category: "herramientas de mano",
+//    price: 2500,
+//    stock: 5,
+//    image: "/img/oferta3.jpg",
+// count: 0,
+//  },
+//  {
+//    id: "4",
+//    name: "MULTIMETRO",
+//    category: "medicion",
+//    price: 3000,
+//    stock: 5,
+//    image: "/img/oferta4.jpg",
+// count: 0,
+//  },
+//  {
+//    id: "5",
+//    name: "CAJA PLASTICA PARA HERRAMIENTAS",
+//    category: "porta herramientas",
+//    price: 1500,
+//    stock: 5,
+//    image: "/img/oferta5.jpg",
+// count: 0,
+//  },
+//  {
+//    id: "6",
+//    name: "CANANA PORTA HERRAMIENTAS",
+//    category: "porta herramientas",
+//    price: 1000,
+//    stock: 5,
+//    image: "/img/oferta6.jpg",
+//    count: 0,
+//  }
+// ]
+//const database = getFirestore()
+//const ref = collection(database, "products") //si no esat la collection fire la crea
+
+                    //mapear los productos de data
+
+// data.map((product) => addDoc(ref, product))  //una ves subidos los productos sacamos el map para que no luba de nuevo, para no escribirlos a mano en firestore
+
 
 //initializeApp(process.env.firebaseConfig); modo seguro
 

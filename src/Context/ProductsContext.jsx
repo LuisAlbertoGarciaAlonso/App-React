@@ -1,4 +1,6 @@
+import { addDoc,getFirestore,collection } from "@firebase/firestore";
 import React, { createContext, useEffect, useState} from "react";
+
 
 export const ProductsContext = createContext(null);
 
@@ -7,6 +9,16 @@ export const ProductsProvider = ({children}) => {
     const [cart, setCart] =  useState([]);
     const [total, setTotal]= useState (0);//total de precio  carro   
     const [cantidad, setCantidad] = useState()
+    const database = getFirestore()
+
+    //FIREBASE!!!
+    // const ref = collection(database, "products")
+    // const refCart = collection(database, "cartItems") //setCArt
+
+
+
+
+
 
     useEffect(()=>{
         let tot= 0;
@@ -37,6 +49,7 @@ const clear = () => {
 const addToCart = (product) => {//total por producto y sumas total de compra
     const index = isOnCart(product.id)
     if( index === -1 ){
+        //addDoc(refCart, product) //firebase guardar el producto en el carrito
         const item = {
             ...product,
             totalPrice: product.cantidad*product.price
