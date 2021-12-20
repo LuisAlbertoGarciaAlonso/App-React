@@ -2,21 +2,42 @@
 import "./cartWidget.css";
 import React,{ useContext} from "react"
 import { ProductsContext,} from "../../Context/ProductsContext";
-
+import swal from 'sweetalert';
 
 
 
 
 const CartWidget = () => {
 
-    const { cart, total,clear,sumarAlCarrito,restarAlCarrito,eliminarDelCarrito} = useContext(ProductsContext) //para usar el contesxt
-
+    const { cart, total,clear,sumarAlCarrito,restarAlCarrito,eliminarDelCarrito} = useContext(ProductsContext) //para usar el context
+    function graciasPorLaCompra(){
+        if(cart.length>=1)
+        swal({
+            title: "Estas Seguro?, sabemos que si pero...",
+            text: "Una Vez que Aceptes se Procesara tu Carrito para Facturarlo y Entregarlo",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Perfecto! Estamos procesando tu compra!! GRACIAS!!!", {
+                icon: "success",
+                
+              });
+              clear();
+              <Route path="/" element={<ItemListContainer />} />
+            } else {
+              swal("Nos Imaginabamos, a Seguir comprando!");
+            }
+          });
+          
+    }
     return(
         <>
          {/* <img src={iconoCarrito} alt="" className="carrito"/>  */}
         <h2 className="d-flex flex-row textcolor">Cantidad de Productos {cart.length} </h2>
         {/* <pre>{JSON.stringify(cart, null , 3)}</pre> */}
-        
     <div >
         {
         cart?.map((item)=>{
@@ -47,6 +68,7 @@ const CartWidget = () => {
 <h2 className="d-flex flex-row textcolor">
     TOTAL CARRITO: $ {total}
     <button onClick={clear}  className="btn btn-danger  d-flex flex-row">Vaciar Carrito</button>
+    <button onClick={graciasPorLaCompra}  className="btn btn-success  d-flex flex-row">Comprar</button>
 </h2>
         </>
     )
