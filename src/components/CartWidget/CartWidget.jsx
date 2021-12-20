@@ -1,15 +1,15 @@
 // import iconoCarrito from "./iconoCarrito.jpg"
-import "./icono.css";
+import "./cartWidget.css";
 import React,{ useContext} from "react"
-import { ProductsContext } from "../../Context/ProductsContext";
-// import ItemCount from "../ItemCount/ItemCount";
+import { ProductsContext,} from "../../Context/ProductsContext";
+
 
 
 
 
 const CartWidget = () => {
 
-    const { cart, total,clear,sumarAlCarrito,restarAlCarrito} = useContext(ProductsContext) //para usar el contesxt
+    const { cart, total,clear,sumarAlCarrito,restarAlCarrito,eliminarDelCarrito} = useContext(ProductsContext) //para usar el contesxt
 
     return(
         <>
@@ -24,7 +24,7 @@ const CartWidget = () => {
                 name,
                 // category,
                 price,
-                // stock,
+                stock,
                 image,
                 cantidad,
                 totalPrice}=item
@@ -35,10 +35,9 @@ const CartWidget = () => {
                     <span className="d-flex flex-column ">Precio Unitario: $ {price}</span>
                     <span className="d-flex flex-column ">Cantidad de Unidades: {cantidad}</span>
                     <span className="d-flex flex-column ">Total Precio Productos: $ {totalPrice}</span>
-                    {/* <button className="btn btn-success d-flex flex-row">+</button>
-                    <button className="btn btn-danger d-flex flex-row">-</button>                     */}
-                    <button onClick={sumarAlCarrito} className="btn btn-success botonMas">Sumar</button>
-                    <button onClick={restarAlCarrito} className="btn btn-danger botonMenos">Restar</button>
+                    <button onClick={()=>sumarAlCarrito(id)} className="btn btn-success botonMas" disabled={stock<=cantidad}>Sumar</button>
+                    <button onClick={()=>restarAlCarrito(id)} className="btn btn-danger botonMenos" disabled={cantidad<=1}>Restar</button>
+                    <button onClick={()=>eliminarDelCarrito(id)} className="btn btn-danger botonEliminar">Eliminar</button>
                 </div>    
             )
         })

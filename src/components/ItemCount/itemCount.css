@@ -1,9 +1,11 @@
 .botonMas{
+    margin-left: 5px;
     padding: 5px;
     margin-bottom: 10px;
     color: black;
 }
 .botonMenos{
+    margin-left: 5px;
     padding: 5px;
     margin-bottom: 10px;
     color: black;
