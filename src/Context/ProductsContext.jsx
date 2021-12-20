@@ -1,13 +1,16 @@
 import { addDoc,getFirestore,collection } from "@firebase/firestore";
 import React, { createContext, useEffect, useState} from "react";
 export const ProductsContext = createContext(null);
+
 export const ProductsProvider = ({children}) => {
     const [cart, setCart] =  useState([]);
     const [total, setTotal]= useState (0);//total de precio  carro   
+
     const database = getFirestore()
     //FIREBASE!!!
     // const ref = collection(database, "products")
     // const refCart = collection(database, "cartItems") //setCArt
+    
     useEffect(()=>{
         let tot= 0;
     cart.forEach(i=>tot+=i.totalPrice)//tot=tot+i.totalPrice
@@ -16,6 +19,7 @@ export const ProductsProvider = ({children}) => {
 const isOnCart =(itemId)=>{
     return cart?.findIndex(item => item.id === itemId)
 }
+
 const sumarAlCarrito = (productId)=>{
     const index = isOnCart(productId)
     if(index<0){
@@ -35,6 +39,7 @@ const sumarAlCarrito = (productId)=>{
     setCart([...newCart]);
     console.log(productId)
 }
+
 const restarAlCarrito = (productId)=>{
     const index = isOnCart(productId)
     if(index<0){
@@ -88,7 +93,16 @@ const addToCart = (product) => {//total por producto y sumas total de compra
 }
 
     return(
-        <ProductsContext.Provider value={{cart,total,addToCart,sumarAlCarrito,restarAlCarrito,clear,eliminarDelCarrito}}>
+        <ProductsContext.Provider
+        value={{
+            cart,
+            total,
+            addToCart,
+            sumarAlCarrito,
+            restarAlCarrito,
+            clear,
+            eliminarDelCarrito
+                }}>
             {children}
         </ProductsContext.Provider>
     )

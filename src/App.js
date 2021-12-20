@@ -16,13 +16,9 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
-
         <Route path="/category/:catId" element={<ItemListContainer />} />
-
         <Route path="/product/:itemId" element={<ItemDetailContainer />} />
-
-        <Route path="/Carrito"  element={<CartWidget />} />
-        
+        <Route path="/Carrito"  element={<CartWidget />} />        
         {/*   MENSAJE DE ERROR RUTA QUE NO EXISTE
         <Route path="*" element={<h1>404 NOT FOUND</h1>} /> */}
         {/* REDIRECCIONAR SI NO EXISTE RUTA
