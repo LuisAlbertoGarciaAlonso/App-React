@@ -1,0 +1,25 @@
+.form-container {
+  width: 35vw;
+  align-content: center;
+  margin: auto;
+}
+
+.form-container h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+}
+.form-container input {
+  margin: 5px;
+  width: 70%;
+  height: 20px;
+  border: none;
+  border-bottom: 1px dotted #307354;
+  background-color: #c2d7f2;
+}
+.form-container button {
+  width: 30%;
+  background-color: #f2a2a2;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 2px 2px 4px #25594a;
+}

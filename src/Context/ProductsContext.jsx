@@ -1,21 +1,24 @@
-import { addDoc,getFirestore,collection } from "@firebase/firestore";
+import { addDoc,getFirestore,collection,getDocs, doc, updateDoc,deleteDoc} from "@firebase/firestore";
 import React, { createContext, useEffect, useState} from "react";
 export const ProductsContext = createContext(null);
 
 export const ProductsProvider = ({children}) => {
     const [cart, setCart] =  useState([]);
+    const [loading, setLoading] =useState(false)
     const [total, setTotal]= useState (0);//total de precio  carro   
 
-    const database = getFirestore()
     //FIREBASE!!!
-    // const ref = collection(database, "products")
-    // const refCart = collection(database, "cartItems") //setCArt
+     const database = getFirestore()    
+     const ref = collection(database, "products")
+     const refCart = collection(database, "cartItems") //setCArt
     
     useEffect(()=>{
         let tot= 0;
-    cart.forEach(i=>tot+=i.totalPrice)//tot=tot+i.totalPrice
+    cart.forEach(i=>tot+=i.totalPrice)
     setTotal(tot)
     },[cart]);
+
+    
 const isOnCart =(itemId)=>{
     return cart?.findIndex(item => item.id === itemId)
 }
@@ -28,16 +31,17 @@ const sumarAlCarrito = (productId)=>{
     let count = cart[index].cantidad + 1;
     if(count>cart[index].stock){
         count=cart[index].stock
-    }
-    const item = {
-        ...cart[index],
-        cantidad: count,
-        totalPrice: count*cart[index].price
-    }
-    const newCart= [...cart]
-    newCart[index]=item;
-    setCart([...newCart]);
-    console.log(productId)
+    }   
+    upDateCart(cart[index].cartId,{cantidad:count, totalPrice:count*cart[index].price})
+}
+
+const upDateCart = (cartId,newItem)=>{
+    setLoading(true)
+    const pro = doc(database,"cartItems",cartId)
+    updateDoc(pro,newItem)
+    .then(()=>{
+        getCartItems();
+    })
 }
 
 const restarAlCarrito = (productId)=>{
@@ -50,47 +54,63 @@ const restarAlCarrito = (productId)=>{
         eliminarDelCarrito(productId)
         return
     }
-    const item = {
-        ...cart[index],
-        cantidad: count,
-        totalPrice: count*cart[index].price
-    }
-    const newCart= [...cart]
-    newCart[index]=item;
-    setCart([...newCart]);
-    console.log(productId)
+    upDateCart(cart[index].cartId,{cantidad:count, totalPrice:count*cart[index].price})
 }
 
+
 const eliminarDelCarrito = (productId)=>{
-    const newCart= cart.filter(i=>i.id!==productId)
-    setCart([...newCart]);
-    console.log(productId)
+    const index = isOnCart(productId)
+    if(index<0){
+        throw new Error("Error");
     }
+    setLoading(true)
+    deleteDoc(doc(database, "cartItems", cart[index].cartId))
+    .then(()=>{
+        getCartItems();
+    })
+}
 
 const clear = () => {
     setCart([])
 }
 
-const addToCart = (product) => {//total por producto y sumas total de compra
+useEffect(() => {
+    getDocs(refCart)
+        .then((snapShot)=>{
+            setCart(snapShot.docs.map((doc)=>({cartId:doc.id,...doc.data()})))
+        })
+}, [])
+
+const getCartItems = ()=>{
+    setLoading(true)
+    getDocs(refCart)
+        .then((snapShot)=>{
+            setCart(snapShot.docs.map((doc)=>({cartId:doc.id,...doc.data()})))
+            setLoading(false)
+        })
+}
+const addToCart = (product) => {
     const index = isOnCart(product.id)
     if( index === -1 ){
-        //addDoc(refCart, product) //firebase guardar el producto en el carrito
+        
         const item = {
             ...product,
             totalPrice: product.cantidad*product.price
         }
-        setCart(cart => [ item,...cart ]);
+        //A FireStore
+        addDoc(refCart,item)
+        getCartItems()
+
     }else{
         const count = cart[index].cantidad + product.cantidad;
-        const item = {
-            ...product,
-            cantidad: count,
-            totalPrice: count*product.price
-        }
-        const newCart= cart.filter(i=>i.id!==product.id)
-        setCart([item,...newCart]);
+        const ref=cart.find(item=>item.id===product.id)
+        upDateCart(ref.cartId,{cantidad:count,totalPrice:count*product.price})
     }
+
 }
+const getUser = (form) => {
+    setUserEmail(form)
+  }
 
     return(
         <ProductsContext.Provider
@@ -101,7 +121,9 @@ const addToCart = (product) => {//total por producto y sumas total de compra
             sumarAlCarrito,
             restarAlCarrito,
             clear,
-            eliminarDelCarrito
+            eliminarDelCarrito,
+            getUser,
+            loading
                 }}>
             {children}
         </ProductsContext.Provider>

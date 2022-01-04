@@ -6,6 +6,7 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import CartWidget from './components/CartWidget/CartWidget.jsx';
 import { ProductsProvider } from './Context/ProductsContext';
+import Footer from "../src/components/Footer/footer"
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         {/* REDIRECCIONAR SI NO EXISTE RUTA
         <Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>
+      <Footer />
     </BrowserRouter>
     </ProductsProvider>
   );

@@ -5,12 +5,15 @@ import "../../Css/itemDetail.css"
 import { ProductsContext } from '../../Context/ProductsContext';
 
 
-export const ItemDetail = ({ id, name, category, image, price, stock , onAdd, irAlCarrito, data}) => {
+
+
+const ItemDetail = ({ id, name, category, image, price, stock , onAdd, irAlCarrito,}) => {
   return (
-    <div className="detail-row">
+    <div className="detail-row" key ={id} id={id}>
       <img src={image} alt={`${id}-${name}`} className="flex-col imagenDetail" />
       <section className="flex-col">
         <h1>{name}</h1>
+        <h3>{category}</h3>
         <p>Descripcion</p>
         <h2>$ {price} </h2>
         {irAlCarrito? 
@@ -25,3 +28,5 @@ export const ItemDetail = ({ id, name, category, image, price, stock , onAdd, ir
     </div>
   );
 };
+
+export default ItemDetail

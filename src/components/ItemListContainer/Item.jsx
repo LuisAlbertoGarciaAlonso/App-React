@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Item = ({ id, name, category, image, price,stock }) => {
   return (
+    <>
     <Link to={`/product/${id}`}>
       <div className={`item_card cardOferta`}>
         <span>{name}</span>
@@ -16,6 +17,7 @@ export const Item = ({ id, name, category, image, price,stock }) => {
         <button className="btn btn-success botonAdd">Ver Producto</button>
       </div>
     </Link>
+    </>
   );
 };
 

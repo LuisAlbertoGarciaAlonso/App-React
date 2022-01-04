@@ -1,0 +1,9 @@
+.footer {
+  width: 100vw;
+    height: 90px;
+  padding: 5px 10px;
+  position: static;
+ color: rgb(211, 211, 211);
+  padding-top: 50px;  
+  padding-left: 50px;
+}
