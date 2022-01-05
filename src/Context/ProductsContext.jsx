@@ -5,7 +5,9 @@ export const ProductsContext = createContext(null);
 export const ProductsProvider = ({children}) => {
     const [cart, setCart] =  useState([]);
     const [loading, setLoading] =useState(false)
+    const [userEmail, setUserEmail] = useState('')
     const [total, setTotal]= useState (0);//total de precio  carro   
+    const realTime = new Date()
 
     //FIREBASE!!!
      const database = getFirestore()    
@@ -18,7 +20,6 @@ export const ProductsProvider = ({children}) => {
     setTotal(tot)
     },[cart]);
 
-    
 const isOnCart =(itemId)=>{
     return cart?.findIndex(item => item.id === itemId)
 }
@@ -56,7 +57,6 @@ const restarAlCarrito = (productId)=>{
     }
     upDateCart(cart[index].cartId,{cantidad:count, totalPrice:count*cart[index].price})
 }
-
 
 const eliminarDelCarrito = (productId)=>{
     const index = isOnCart(productId)
@@ -106,8 +106,8 @@ const addToCart = (product) => {
         const ref=cart.find(item=>item.id===product.id)
         upDateCart(ref.cartId,{cantidad:count,totalPrice:count*product.price})
     }
-
 }
+
 const getUser = (form) => {
     setUserEmail(form)
   }
@@ -122,9 +122,10 @@ const getUser = (form) => {
             restarAlCarrito,
             clear,
             eliminarDelCarrito,
+            loading,
             getUser,
-            loading
-                }}>
+            userEmail
+        }}>
             {children}
         </ProductsContext.Provider>
     )

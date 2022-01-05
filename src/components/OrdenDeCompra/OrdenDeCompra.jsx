@@ -1,24 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CartContext } from '../../Context/CartContext'
-import Mensaje from '../Mensaje/Mensaje'
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  orderBy,
-  query,
-} from 'firebase/firestore'
-import './order.css'
+import { ProductsContext} from "../../Context/ProductsContext";
+import Mensaje from '../DatosPedido/DatosPedido'
+import {getFirestore,collection,getDocs,orderBy,query,} from 'firebase/firestore'
 
-const Order = () => {
+
+const Orden = () => {
   const [order, setOrder] = useState([])
-  const { userEmail } = useContext(CartContext)
+  const { userEmail } = useContext(ProductsContext)
   const { email } = userEmail
 
   useEffect(() => {
-    const db = getFirestore()
-    const ref = query(collection(db, 'ticket'), orderBy('date'))
+    const dataCompra = getFirestore()
+    const ref = query(collection(dataCompra, 'ordenDeCompra'), orderBy('date'))
     getDocs(ref).then((snapshot) => {
       const orden = snapshot.docs.map((doc) => {
         const data = doc.data()
@@ -38,20 +32,20 @@ const Order = () => {
     })
   }, [email])
   return (
-    <div className="order-box">
+    <div style={{color: 'white'}}>
       {order?.lenght === 0 ? (
         <h1>Cargando...</h1>
       ) : (
         <>
-          <h1>Aca dejamos tus tikets de compra</h1>
+          <h1>Compra Realizada</h1>
           {order.map((ord) => (
             <Mensaje key={ord.id} ord={ord} />
           ))}
         </>
       )}
-      <Link to="/">Volver a Home</Link>
+      <Link to="/">Volver</Link>
     </div>
   )
 }
 
-export default Order
+export default Orden

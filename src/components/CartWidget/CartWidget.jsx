@@ -1,8 +1,8 @@
-// import iconoCarrito from "./iconoCarrito.jpg"
-import "./cartWidget.css";
-import React, { useContext,useState } from "react";
+import "../../Css/cartWidget.css";
+import React, { Fragment, useContext, useState } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
-import swal from "sweetalert";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import Orden from "../OrdenDeCompra/OrdenDeCompra";
 
 const CartWidget = () => {
   const {
@@ -12,62 +12,41 @@ const CartWidget = () => {
     sumarAlCarrito,
     restarAlCarrito,
     eliminarDelCarrito,
+    loading,
     getUser,
-    loading
   } = useContext(ProductsContext);
+  const [form, getForm] = useState({ nombre: "", email: "" });
+  const fecha = new Date();
+  const [irCompra, setIrCompra] = useState(false);
 
-  function graciasPorLaCompra() {
-    if (cart.length >= 1)
-      swal({
-        title: "Estas Seguro?, sabemos que si pero...",
-        text: "Una Vez que Aceptes se Procesara tu Carrito para Facturarlo y Entregarlo",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((willDelete) => {
-        if (willDelete) {
-          swal("Perfecto! Estamos procesando tu compra!! GRACIAS!!!", {
-            icon: "success",
-          });
-          clear();
-        } else {
-          swal("Nos Imaginabamos, a Seguir comprando!");
-        }
-      });
-  }
+  const finalizarCompra = (e) => {
+    e.preventDefault();
+    getUser(form);
+    const dataCompra = getFirestore();
+    const ref = collection(dataCompra, "ordenDeCompra");
+    const ordenDeCompra = {
+      comprador: form.name,
+      email: form.email,
+      items: cart,
+      date: fecha,
+      Total: total,
+    };
+    console.log(ordenDeCompra);
+    addDoc(ref, ordenDeCompra);
+    setIrCompra(true);
+    clear()
+  };
 
-  const [form, getForm] = useState({ nombre: '', email: '' })
-  const [goTicket, setGoTicket] = useState(false)
-
-  const llenarForm = (e) => {
-    const { name, value } = e.target
+  const nameForm = (e) => {
+    const { name, value } = e.target;
     getForm({
       ...form,
       [name]: value,
-    })
-  }
-  const realTime = new Date()
-const finalizar = () => {
-    getUser(form)
-    const db = getFirestore()
-    const ref = collection(db, 'ticket')
-    const newOrder = {
-      buyer: form.email,
-      items: cart,
-      date: realTime,
-      total: totalCompra,
-    }
-    console.log(newOrder)
-    addDoc(ref, newOrder)
-    setGoTicket(true)
-    eliminar()
-  }
-
-
+    });
+  };
 
   return (
     <>
-      {/* <img src={iconoCarrito} alt="" className="carrito"/>  */}
       <h2 className="d-flex flex-row textcolor">
         Cantidad de Productos {cart.length}{" "}
       </h2>
@@ -99,14 +78,14 @@ const finalizar = () => {
               <button
                 onClick={() => sumarAlCarrito(id)}
                 className="btn btn-success botonMas"
-                disabled={stock <= cantidad||loading}
+                disabled={stock <= cantidad || loading}
               >
                 Sumar
               </button>
               <button
                 onClick={() => restarAlCarrito(id)}
                 className="btn btn-danger botonMenos"
-                disabled={cantidad <= 1||loading}
+                disabled={cantidad <= 1 || loading}
               >
                 Restar
               </button>
@@ -118,52 +97,47 @@ const finalizar = () => {
                 Eliminar
               </button>
             </div>
-          );
+          )
         })}
-
       </div>
       <hr className=" textcolor" />
-      <h2 className="d-flex flex-row textcolor">
-        TOTAL CARRITO: $ {total}
-        <button onClick={clear} className="btn btn-danger  d-flex flex-row">
-          Vaciar Carrito
-        </button>
-        <button
-          onClick={graciasPorLaCompra}
-          className="btn btn-success  d-flex flex-row"
-        >
-          Comprar
-        </button>
-        <div className="formuser">
-              <form metod="POST" onSubmit={finalizar}>
-                <p>Completá tus datos para finalizar la compra</p>
-                <input
-                  onChange={llenarForm}
-                  type="name"
-                  name="nombre"
-                  placeholder="Nombre"
-                />
-                <input
-                  onChange={llenarForm}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                />
-                <button
-                  disabled={
-                    cart?.length === 0 ||
-                    form.nombre === '' ||
-                    form.email === ''
-                  }
-                >
-                  Finalizar Compra
-                </button>
-              </form>
-            </div>
-
-
-
-      </h2>
+      <div>
+        <h2 className="d-flex flex-row textcolor">
+          TOTAL CARRITO: $ {total}
+          <form onSubmit={finalizarCompra}>
+            <h2>Para Terminar La Compra Complete Los Datos</h2>
+            <input
+              type="name"
+              placeholder="Name"
+              name="name"
+              onChange={nameForm}
+            ></input>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={nameForm}
+            ></input>
+            <button
+              className="btn btn-success "
+              disabled={
+                cart?.length === 0 ||
+                nameForm.nombre === "" ||
+                nameForm.email === ""
+              }
+            >
+              {" "}
+              Comprar{" "}
+            </button>
+          </form>
+          <button onClick={clear} className="btn btn-danger  ">
+            Vaciar Carrito
+          </button>
+        </h2>
+      </div>
+      <>
+      <Orden />
+      </>
     </>
   );
 };

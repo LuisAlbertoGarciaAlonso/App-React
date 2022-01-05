@@ -8,9 +8,7 @@ import CartWidget from './components/CartWidget/CartWidget.jsx';
 import { ProductsProvider } from './Context/ProductsContext';
 import Footer from "../src/components/Footer/footer"
 
-
 export default function App() {
-  
   return (
     <ProductsProvider>
     <BrowserRouter>
@@ -20,10 +18,6 @@ export default function App() {
         <Route path="/category/:catId" element={<ItemListContainer />} />
         <Route path="/product/:itemId" element={<ItemDetailContainer />} />
         <Route path="/Carrito"  element={<CartWidget />} />        
-        {/*   MENSAJE DE ERROR RUTA QUE NO EXISTE
-        <Route path="*" element={<h1>404 NOT FOUND</h1>} /> */}
-        {/* REDIRECCIONAR SI NO EXISTE RUTA
-        <Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

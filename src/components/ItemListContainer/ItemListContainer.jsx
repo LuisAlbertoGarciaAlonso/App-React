@@ -42,7 +42,6 @@ export const ItemListContainer = ({ greeting }) => {
       const products = snapshot.docs.map((doc) => {
         return { id: doc.id, ...doc.data() }
       })
-      console.log(ref)
       console.log(products)
       const filteredItems = products.filter((p) => p.category === catId)
       catId === undefined ? setItems(products) : setItems(filteredItems)
