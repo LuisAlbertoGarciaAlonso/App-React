@@ -28,16 +28,17 @@ const Orden = () => {
           date: normalizedCreatedAt,
         }
       })
-      setOrder(orden.filter((b) => b.buyer === email))
+      console.log(orden)
+      setOrder(orden.filter((b) => b.email === email))
     })
-  }, [email])
+  }, [])
   return (
     <div style={{color: 'white'}}>
       {order?.lenght === 0 ? (
         <h1>Cargando...</h1>
       ) : (
         <>
-          <h1>Compra Realizada</h1>
+          <h1 className="ms-4">Compra Realizada</h1>
           {order.map((ord) => (
             <Mensaje key={ord.id} ord={ord} />
           ))}
