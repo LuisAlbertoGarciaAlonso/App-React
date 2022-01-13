@@ -71,7 +71,6 @@ const CartWidget = () => {
           </>
           
         )}
-
         {!irCompra ? (
           <>
             <div className="d-flex flex-row ">

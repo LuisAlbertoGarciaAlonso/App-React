@@ -1,4 +1,4 @@
-import { addDoc,getFirestore,collection,getDocs, doc, updateDoc,deleteDoc} from "@firebase/firestore";
+import { addDoc,getFirestore,collection,getDocs, doc, updateDoc,deleteDoc, deleteDocs, docs} from "@firebase/firestore";
 import React, { createContext, useEffect, useState} from "react";
 export const ProductsContext = createContext(null);
 
@@ -71,7 +71,10 @@ const eliminarDelCarrito = (productId)=>{
 }
 
 const clear = () => {
-    setCart([])
+    const deleteCart = cart.map(cartI=>deleteDoc(doc(database, "cartItems", cartI.cartId)))
+    setLoading(true)
+    Promise.all(deleteCart).then(()=>{ getCartItems();
+    })
 }
 
 useEffect(() => {

@@ -11,7 +11,6 @@ export const NavBar = () => {
     { id: '2', address: '/category/herramientas de mano', text: 'Herramientas de Mano' },
     { id: '3', address: '/category/medicion', text: 'Medicion' },
     { id: '4', address: '/category/porta herramientas', text: 'Porta Herramientas' },
-    { id: '5', address: '/Carrito', text:  `Carrito ${cart.length}` } ,
   ];
   return (
     <section className="aparecer">
@@ -26,6 +25,15 @@ export const NavBar = () => {
           </div>
         );
       })}
+      {cart.length && 
+      <div className="links firma animate__animated animate animate__flip" key={5}>
+            <NavLink
+              to="/Carrito"
+              className={({ isActive }) => (isActive ? 'activeClass' : '')}>
+              Carrito {cart.length}
+            </NavLink>
+          </div>
+      }
     </section>
   );
 };
