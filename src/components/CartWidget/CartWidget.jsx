@@ -56,12 +56,12 @@ const CartWidget = () => {
           </h2>
         ) : (
           <>
-            <div className=" d-flex  flex-direction: column justify-content-center">
+            <div className=" d-flex  flex-direction: column justify-content-center title">
               <p style={{ color: "white" }}>
                 <h2>No hay Productos en el Carrito</h2>{" "}
               </p>
             </div>
-            <div className="d-flex flex-direction: column justify-content-center">
+            <div className="d-flex flex-direction: column justify-content-center btnVolver">
               <button className="btn btn-secondary ">
                 <Link style={{ color: "white" }} to="/">
                   Volver a Productos
@@ -69,6 +69,7 @@ const CartWidget = () => {
               </button>
             </div>
           </>
+          
         )}
 
         {!irCompra ? (

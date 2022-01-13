@@ -44,7 +44,11 @@ const Orden = () => {
           ))}
         </>
       )}
-      <Link to="/">Volver</Link>
+      <button className="btn btn-secondary ">
+                <Link style={{ color: "white" }} to="/">
+                  Volver a Productos
+                </Link>
+              </button>
     </div>
   )
 }
