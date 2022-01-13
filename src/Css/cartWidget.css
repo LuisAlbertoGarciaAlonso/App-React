@@ -13,4 +13,15 @@ img{
     margin-bottom: 10px;
     color: black;
 }
-
+.text{
+    font-size: large;
+    width: 100%;
+}
+.place{
+    margin: 1rem;
+}
+.btnCompra{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
